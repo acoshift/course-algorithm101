@@ -17,36 +17,48 @@ func main() {
 	fmt.Println(t.Left().Left().Get())   // 2
 }
 
-type Node struct {
-	Data  int
-	Left  *Node
-	Right *Node
-}
-
 type BinaryTree struct {
-	root *Node
+	m    []int
+	root int
 }
 
 func NewBinaryTree(data int) *BinaryTree {
-	return &BinaryTree{root: &Node{Data: data}}
+	m := make([]int, 15)
+	m[0] = data
+	return &BinaryTree{
+		m: m,
+	}
 }
 
 func (t *BinaryTree) Get() int {
-	return t.root.Data
+	return t.m[t.root]
 }
 
 func (t *BinaryTree) Left() *BinaryTree {
-	return &BinaryTree{root: t.root.Left}
+	return &BinaryTree{
+		m:    t.m,
+		root: 2*t.root + 1,
+	}
 }
 
 func (t *BinaryTree) Right() *BinaryTree {
-	return &BinaryTree{root: t.root.Right}
+	return &BinaryTree{
+		m:    t.m,
+		root: 2*t.root + 2,
+	}
 }
 
 func (t *BinaryTree) SetLeft(data int) {
-	t.root.Left = &Node{Data: data}
+	t.m[2*t.root+1] = data
 }
 
 func (t *BinaryTree) SetRight(data int) {
-	t.root.Right = &Node{Data: data}
+	t.m[2*t.root+2] = data
+}
+
+func (t *BinaryTree) Parent() *BinaryTree {
+	return &BinaryTree{
+		m:    t.m,
+		root: (t.root - 1) / 2,
+	}
 }

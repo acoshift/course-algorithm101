@@ -50,7 +50,7 @@ func findEmpty(s [][]int) (x, y int) {
 }
 
 func fillColor(s [][]int, m, n, x, y int, fromColor, toColor int) {
-	if x < 0 || y < 0 || x >= n || y >= n {
+	if x < 0 || y < 0 || x >= n || y >= m {
 		return
 	}
 	if s[y][x] != fromColor {

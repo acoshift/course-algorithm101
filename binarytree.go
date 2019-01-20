@@ -6,7 +6,7 @@ func main() {
 	t.Left().SetLeft(2)
 	t.Left().SetRight(6)
 	t.Left().Right().SetLeft(5)
-	t.Left().Right().SetLeft(11)
+	t.Left().Right().SetRight(11)
 	t.SetRight(5)
 	t.Right().SetRight(9)
 	t.Right().Right().SetLeft(4)
@@ -23,6 +23,10 @@ type BinaryTree struct {
 }
 
 func NewBinaryTree(data int) *BinaryTree {
+	panic("TODO")
+}
+
+func (t *BinaryTree) Get() int {
 	panic("TODO")
 }
 
